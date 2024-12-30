@@ -1,19 +1,24 @@
 import { useRef } from "react"
-import { DummySession } from "../shared/declarations/Dummyjson"
+import { DummyEndPoints, DummySession } from "../shared/declarations/Dummyjson"
 import useFetch from "../shared/hooks/useFetch"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
     const loginForm = useRef(null)
-    const {post} = useFetch('https://dummyjson.com/auth/login')
+    const navigate = useNavigate()
+
+    const {post} = useFetch(DummyEndPoints.LOGIN)
 
     const ingresar  = async (e: React.MouseEvent) => {
         e.preventDefault()
         const formulario = loginForm.current
+        
         if(formulario){
             const form = new FormData(formulario)
             const formObject =  Object.fromEntries(form.entries())
             const json: DummySession = await post(formObject)
             localStorage.setItem('token',json.accessToken)
+            navigate('/products')
         }
 
         
