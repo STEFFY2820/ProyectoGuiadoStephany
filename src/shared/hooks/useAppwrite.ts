@@ -82,9 +82,22 @@ const useAppwrite = () => {
         }
     
     const fromSession = () => {
+
+        
             const login = async (email: string, password: string) => {
-                return await account.createEmailPasswordSession(email, password)
-            }
+                try{ const see=await account.createEmailPasswordSession(email, password)
+                    console.log(see)
+                    console.log('se inicio la sesion')
+                    return see
+                    
+                }catch(error){
+                    console.error("Error al iniciar sesion:", error.message || error);
+                    throw new Error("Error al iniciar sesion");
+
+                }
+
+                }
+                
     
             const logout = async (sessionId: string) => {
                 return await account.deleteSession(sessionId)

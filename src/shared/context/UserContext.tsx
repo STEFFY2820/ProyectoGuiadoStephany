@@ -29,24 +29,26 @@ const {fromSession} = useAppwrite()
 
 const {fromDatabase} = useAppwrite()
 
+
+const profileCollection = fromDatabase(Appwrite.datababaseId).collection(Appwrite.collections.profiles)
+
+
 const getProfile = async(previousSession)=>{
   
-  const ProfileCollection = fromDatabase(Appwrite.datababaseId).collection(Appwrite.collections.profiles)
   const {documents} =session?
 
-  await ProfileCollection.getDocuments([ Query.equal('userId',session?.userId)])
+  await profileCollection.getDocuments([ Query.equal('userId',session?.userId)])
   :
-  await ProfileCollection.getDocuments([ Query.equal('userId',previousSession?.userId)])
+  await profileCollection.getDocuments([ Query.equal('userId',previousSession?.userId)])
 
   setProfile(documents[0])
 
 }
 
+
 const login = async(email:string,password:string) =>{
   const appwriteSession = await fromSession().login(email,password)
   setSession(appwriteSession)
-  console.log(appwriteSession)
-
   localStorage.setItem('session',JSON.stringify(appwriteSession))
 }
 
@@ -59,15 +61,22 @@ const logout =async()=>{
   }
 
   useEffect(()=>{
+      try{
       const previousSession = JSON.parse(localStorage.getItem('session')!)
         if(previousSession){
-          setSession(previousSession)
+        setSession(previousSession)
           
         }getProfile(previousSession)
+        console.log('todo bien en el contexto')
+      }
+        catch(error){
+          console.error("Error al restaurar la seesion",error.message || error)
+        }
     },[])
 
   return (
     <UserContext.Provider value={{session,login,logout,profile}}>
+      {console.log("Contexto:", { session, profile })} 
         {children}
     </UserContext.Provider>
   )

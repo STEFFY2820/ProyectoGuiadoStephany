@@ -16,6 +16,23 @@ const Login = () => {
     const crearCuentaForm = useRef(null)
     const userContext=useContext(UserContext)
 
+    const ingresar = async (e: React.MouseEvent) => {
+        e.preventDefault()
+        const formulario = loginForm.current
+
+        if (formulario) {
+            const form = new FormData(formulario)
+            const { email, password } = Object.fromEntries(form.entries())
+
+            await userContext?.login(email, password)
+
+            // localStorage.setItem('sessionId', userContext!.session.$id)
+            navigate('/products')
+            
+        }
+
+    }
+
     
     const crearCuenta = async (e:React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault()
@@ -40,31 +57,19 @@ const Login = () => {
         }
     }
 
+
+
     
     useEffect(() => {
+
         const session = localStorage.getItem('coockieFallback')
-        
         if (session && JSON.parse(session).length!=0)  navigate('/products')
+        console.log(userContext?.session)
 
     }, [])
 
 
-    const ingresar = async (e: React.MouseEvent) => {
-        e.preventDefault()
-        const formulario = loginForm.current
 
-        if (formulario) {
-            const form = new FormData(formulario)
-            const { email, password } = Object.fromEntries(form.entries())
-
-            await userContext?.login(email, password)
-
-            // localStorage.setItem('sessionId', userContext!.session.$id)
-            navigate('/products')
-            
-        }
-
-    }
 
     return (
         //el stack sigue siendo un div(box), pero por defecto tiene un display flex
@@ -86,7 +91,7 @@ const Login = () => {
 
                         <TabPanels>
                             <TabPanel>
-                                <Box as='form' ref={loginForm} display='flex' flexDirection='column' gap='1em'>
+                                <Box onSubmit={(e: React.MouseEvent<HTMLDivElement>) => ingresar(e)}  as='form' ref={loginForm} display='flex' flexDirection='column' gap='1em'>
                                     <div className="formGroup">
                                         <FormLabel htmlFor="email" color='beige'>Email: </FormLabel>
                                         <Input id="email" name="email" type="email" />
@@ -96,7 +101,7 @@ const Login = () => {
                                         <FormLabel htmlFor="password" color='beige'>Contraseña: </FormLabel>
                                         <Input id="password" name="password" type="password" />
                                     </div>
-                                    <Button onClick={(e) => ingresar(e)}>Ingresar</Button>
+                                    <Button type='submit'>Ingresar</Button>
                                 </Box>
                             </TabPanel>
 
