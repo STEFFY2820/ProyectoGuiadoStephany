@@ -70,7 +70,7 @@ const AppwriteProduct = ({product,deleteAppWriteProduct,onRefresh}:{
           }
         }
 
-        const getImage = ()=> {
+    const getImage = ()=> {
             const url = storage.getFilePreview(Appwrite.buckets.pictures, product.imageId)
             console.log(url)
             setImageUrl(url)

@@ -5,23 +5,25 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-
-import banner8 from '@images/banner6.jpg'
-import banner2 from '@images/banner2.jpg'
-import banner3 from '@images/banner3.jpg'
-import banner4 from '@images/banner4.jpg'
-import { Navigation, Pagination } from "swiper/modules";
+// import '../lib/styles.css';
 
 
-const SwiperImages = [banner8, banner2, banner3, banner4]
+import banner8 from '@images/banner1.jpg'
+import banner2 from '@images/banner5.jpg'
+import banner5 from '@images/images3.jpg'
+import banner4 from '@images/banner10.jpg'
+import { Pagination } from "swiper/modules";
+
+
+const SwiperImages = [banner8, banner2, banner5, banner4]
 
 
 const Carousel = () => {
   return (
-    <Swiper navigation={true} modules={[Navigation, Pagination]} >
+    <Swiper pagination={true} modules={[Pagination]}  className="mySwiper" >
     {
       SwiperImages.map(image => (
-        <SwiperSlide key={image}><Image p='4em' src={image} /></SwiperSlide>
+        <SwiperSlide key={image}><Image h='550px' w='1600px' src={image} /></SwiperSlide>
       ))
     }
   </Swiper>

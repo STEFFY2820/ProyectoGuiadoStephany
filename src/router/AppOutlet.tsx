@@ -4,17 +4,19 @@ import { Navigate, Outlet } from "react-router-dom"
 import { Toaster } from "sonner"
 
 const AppOutlet = () => {
-  const token = localStorage.getItem('sessionId')
+  const token = localStorage.getItem('cookieFallback')
+  const session = localStorage.getItem('session')
 
-  return(
+  return (
     <>
-    <Toaster richColors />{
-    token ?
-    
-    <Suspense fallback={<Loading/>}>
-    <Outlet />
-    </Suspense> : <Navigate to='/'/>
-    }
+      <Toaster richColors />            {
+                (token && session) ?
+                    <Suspense fallback={<Loading />}>
+                        <Outlet />
+                    </Suspense>
+                    :
+                    <Navigate to='/' />
+            }
     </>
   )
 }

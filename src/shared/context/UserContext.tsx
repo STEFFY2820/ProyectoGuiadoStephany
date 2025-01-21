@@ -24,32 +24,47 @@ export const UserProvider = ({children}:{children: ReactNode}) => {
 
 const [session, setSession] = useState<Models.Session  | null>()
 const [profile, setProfile] = useState<Profile  | null>()
+const [logged, setLogged] = useState(false)
 
-const {fromSession} = useAppwrite()
-
-const {fromDatabase} = useAppwrite()
-
+const {fromSession,fromDatabase} = useAppwrite()
 
 const profileCollection = fromDatabase(Appwrite.datababaseId).collection(Appwrite.collections.profiles)
 
-
-const getProfile = async(previousSession)=>{
+const getProfile = async (previousSession) => {
   
-  const {documents} =session?
+  try {
+    console.log("Sesion:",session)
+    console.log("PreviousSession:",previousSession)
+    
+    const userId = session?.userId || previousSession?.userId;
 
-  await profileCollection.getDocuments([ Query.equal('userId',session?.userId)])
-  :
-  await profileCollection.getDocuments([ Query.equal('userId',previousSession?.userId)])
+    if (!userId) {
+      throw new Error("El userId no esta definido");
+    }
 
-  setProfile(documents[0])
+    console.log("Ejecutando consulta con userId",userId)
 
-}
+    const { documents } = await profileCollection.getDocuments([
+      Query.equal("userId", userId),
+    ]);
 
+    if (documents.length > 0) {
+      setProfile(documents[0]);
+      console.log("Perfil Encontrado:",documents[0])
+    } else {
+      console.warn("No se encontro ningun perfil:", userId);
+      setProfile(null); 
+    }
+  } catch (error) {
+    console.error("Error al obtener el perfil:", error.message);
+  }
+};
 
 const login = async(email:string,password:string) =>{
   const appwriteSession = await fromSession().login(email,password)
   setSession(appwriteSession)
   localStorage.setItem('session',JSON.stringify(appwriteSession))
+  setLogged(true)
 }
 
 const logout =async()=>{
@@ -57,28 +72,29 @@ const logout =async()=>{
   localStorage.removeItem('session')
   setProfile(null)
   setSession(null)
+  setLogged(false)
 
-  }
+  }    
+  
+const loadData = async () => {
+    const previousSession = JSON.parse(localStorage.getItem('session')!)
 
-  useEffect(()=>{
-      try{
-      const previousSession = JSON.parse(localStorage.getItem('session')!)
-        if(previousSession){
+    if (previousSession) {
         setSession(previousSession)
-          
-        }getProfile(previousSession)
-        console.log('todo bien en el contexto')
-      }
-        catch(error){
-          console.error("Error al restaurar la seesion",error.message || error)
-        }
-    },[])
+        setLogged(true)
+    }
+
+    await getProfile(previousSession)
+}
+
+useEffect(() => {
+  loadData()
+}, [logged])
 
   return (
+    
     <UserContext.Provider value={{session,login,logout,profile}}>
-      {console.log("Contexto:", { session, profile })} 
         {children}
     </UserContext.Provider>
   )
-
 }

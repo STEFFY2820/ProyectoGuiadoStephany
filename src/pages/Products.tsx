@@ -19,7 +19,8 @@ const Products = () => {
   const { fromDatabase } = useAppwrite()
   const ProductsCollection = fromDatabase(Appwrite.datababaseId).collection(Appwrite.collections.products)
   const getProductsAppwrite = async () => {
-  const { documents } = await ProductsCollection.getDocuments([
+  
+    const { documents } = await ProductsCollection.getDocuments([
       Query.equal('ownerId',context?.session.userId)])
       setAppwriteProducts(documents)
 
@@ -34,7 +35,7 @@ const Products = () => {
 
     <BaseLayout>
       <>
-        <Box width='700px' m='auto'>
+        <Box width='1000px' m='auto'>
           <Carousel />
         </Box>
 
