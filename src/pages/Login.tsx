@@ -1,20 +1,14 @@
 import { useContext, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { Box, Button, FormLabel, Stack, Input, TabPanel, TabPanels,Tabs } from "@chakra-ui/react"
-// import loginBackground from '@images/login.jpg'
-// import { account, database, ID } from "../shared/lib/Appwrite"
-//import Email from "@components/Email"
-// import { Appwrite } from "../shared/lib/env"
 import { Toaster } from "sonner"
 import { UserContext } from "../shared/context/UserContext"
-// import { toast } from "sonner"
 import bground from '@images/bccolor.jpg'
 
 const Login = () => {
 
     const loginForm = useRef(null)
     const navigate = useNavigate()
-    // const crearCuentaForm = useRef(null)
     const userContext = useContext(UserContext)
 
 
@@ -85,6 +79,7 @@ const Login = () => {
                                               _hover={{
                                                 transform: "translateY(-20px) scale(1.05)",
                                                 boxShadow: "2xl",
+                                                opacity: 0.9,
                                               }}>
                         <Tabs>
 

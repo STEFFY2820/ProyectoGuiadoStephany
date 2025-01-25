@@ -1,4 +1,4 @@
-import {Box, Flex,Text,VStack,Button} from "@chakra-ui/react";
+import {Box, Flex,Text,VStack,Button,Image} from "@chakra-ui/react";
 import ManServicio from "@components/ManServicio";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import { account } from "../shared/lib/Appwrite";
 import { FaUserLarge } from "react-icons/fa6";
 import ManProfesores from "@components/ManProfesores";
 import ManAlumnos from "@components/ManAlumnos";
+import logoScala from '@images/logo_escala.png';
 
 const Mantenimiento = () => {
   const [username, setUsername] = useState()
@@ -71,9 +72,15 @@ const Mantenimiento = () => {
             Cerrar Sesion
           </Button>
 
+          <Box>
+
+            
+          </Box>
+
         </VStack>
-        <Box pt='50px'>
-          <Text fontSize="sm" mt={4} fontWeight="bold">
+        <Box pt='20px'>
+        <Image src={logoScala}></Image>
+          <Text fontSize="sm" mt={2} fontWeight="bold">
         &copy; {new Date().getFullYear()} <b>Cuna Guardería ABC del Aprendizaje. Todos los derechos reservados.</b>
       </Text></Box>
 

@@ -30,28 +30,49 @@ const Us = () => {
     <HStack spacing={8} align="flex-start" pl='70px'>
 
         <Box>
-          <Box display="flex" alignItems="center" gap="10px" p='10px'>
+          <Box display="flex" alignItems="center" gap="10px" p='10px'
+                                  _hover={{
+                                    transform: "scale(1.1)", }}
+          
+          >
             <Box style={cloudStyle}>
-              <FontAwesomeIcon icon={faHeart} size="3x" color="#fd7114" />
+              <FontAwesomeIcon icon={faHeart} size="3x" color="#fd7114"
+
+              
+              />
             </Box>
             <Text maxWidth="500px"> Cada niño merece ser tratado con empatía, cariño y dignidad</Text>
           </Box>
 
-        <Box display="flex" alignItems="center" gap="10px"  p='10px'>
+        <Box display="flex" alignItems="center" gap="10px"  p='10px'
+                                          _hover={{
+                                            transform: "scale(1.1)", }}
+        >
           <Box style={cloudStyle}>
             <FontAwesomeIcon icon={faGraduationCap} size="3x" color="#6aa5e1" />
           </Box>
           <Text maxWidth="500px"> Diseñamos actividades y programas basados en las mejores prácticas de aprendizaje infantil </Text>
         </Box>
 
-        <Box display="flex" alignItems="center" gap="10px"  p='10px'>
-          <Box style={cloudStyle}>
+        <Box display="flex" alignItems="center" gap="10px"  p='10px'
+        _hover={{
+          transform: "scale(1.1)", }}
+        
+        >
+        <Box style={cloudStyle}
+      _hover={{
+        transform: "scale(1.1)", }}  
+          >
             <FontAwesomeIcon icon={faShield} size="3x" color="#fec344" />
           </Box>
           <Text maxWidth="500px"> Brindamos espacios protegidos y adaptados a las necesidades de los niños</Text>
         </Box>
 
-        <Box display="flex" alignItems="center" gap="10px"  p='10px'>
+        <Box display="flex" alignItems="center" gap="10px"  p='10px'
+        _hover={{
+          transform: "scale(1.1)", }}
+        
+        >
           <Box style={cloudStyle}>
             <FontAwesomeIcon icon={faBusinessTime } size="3x" color="#add546" />
           </Box>
@@ -153,6 +174,7 @@ const cloudStyle = {
   justifyContent: "center",
   alignItems: "center",
   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)"
+  
 };
 
 export default Us

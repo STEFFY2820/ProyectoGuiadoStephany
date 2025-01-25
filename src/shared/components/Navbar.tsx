@@ -1,14 +1,8 @@
 import { Box,  Image, HStack, Text} from "@chakra-ui/react"
 import { RiHomeHeartFill } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
-// import { FaUserLarge } from "react-icons/fa6";
-import logo from '/logofin.jpg'
-// import { ReactElement, useContext, useEffect, useRef, useState } from "react";
+import logo from '@images/logo_guarderia_snfondo.png'
 import { useNavigate } from "react-router-dom";
-// import { toast } from "sonner";
-// import { account } from "../lib/Appwrite"
-// import { Link } from "react-router-dom"
-// import { UserContext } from "../context/UserContext";
 import Whatsapp from "../components/Whatsapp"
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -98,10 +92,10 @@ const Navbar = () => {
         justify="space-between"
         mb={2}
       >
-        <HStack w="100%" m="0 auto" p="1em" color="#5aadac" justifyContent="space-between">
+        <HStack w="100%" m="0 auto" color="#5aadac" justifyContent="space-between" pr='50px'>
           <HStack gap="1em">
-            <Image w="100px" h="100px" src={logo} alt="logo pagina" borderRadius="20%" />
-            <Text fontSize="2xl" fontWeight="bold" lineHeight="1.2">
+            <Image w="150px" h="150px" src={logo} alt="logo pagina" pb='20px' pl='10px'/>
+            <Text fontSize="2xl" fontWeight="bold">
               <span style={{ fontSize: "1.5rem" }}>ABC</span> <br />
               <span style={{ fontSize: "1.2rem" }}>del Aprendizaje</span>
             </Text>
@@ -117,7 +111,7 @@ const Navbar = () => {
                 cursor="pointer"
                 _hover={{
                   backgroundColor: "whiteAlpha.800",
-                  color: "#5aadac",
+                  color: "#FFD84A",
                   borderRadius: "10px",
                   p: "8px"
                 }}
@@ -136,9 +130,10 @@ const Navbar = () => {
                 cursor="pointer"
                 _hover={{
                   backgroundColor: "whiteAlpha.800",
-                  color: "#5aadac",
+                  color: "#FFD84A",
                   borderRadius: "10px",
                   p: "8px"
+                  
                 }}
                 borderRadius="10px"
                 p="8px"
@@ -155,7 +150,7 @@ const Navbar = () => {
                 cursor="pointer"
                 _hover={{
                   backgroundColor: "whiteAlpha.800",
-                  color: "#5aadac",
+                  color: "#FFD84A",
                   borderRadius: "10px",
                   p: "8px"
                 }}
@@ -174,7 +169,7 @@ const Navbar = () => {
                 fontSize="lg"
                 _hover={{
                   backgroundColor: "whiteAlpha.800",
-                  color: "#5aadac",
+                  color: "#FFD84A",
                   borderRadius: "10px",
                   p: "8px"
                 }}

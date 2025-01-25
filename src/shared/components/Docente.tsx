@@ -19,8 +19,16 @@ const Docente = ({docente}) => {
 
   return (
     <Box maxW='sm' padding='20px' >
-    <Card maxW='sm'>
-      <CardBody>
+    <Card maxW='sm'
+          _hover={{
+            bg: "#5aadac",
+            transform: "scale(1.1)",
+            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)", }}
+    
+    >
+      <CardBody
+      
+      >
         <Image src={imageUrl} alt={imageUrl} loading="lazy" h='400px' w='300px'/>
         <Stack mt='6' spacing='3'>
           <Heading color='#d9cc00' size='md'>{docente.nombreDoc}</Heading>

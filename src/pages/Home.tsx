@@ -87,14 +87,14 @@ const Home = () => {
         </Box>
 
         <Box backgroundColor="#f1f8f6" borderRadius="xl" boxShadow="lg">       
-           <Box display="flex" justifyContent="center" alignItems="center" p={5} backgroundColor="#f1f8f6" >
+           <Box display="flex" justifyContent="center" alignItems="center" p={4} backgroundColor="#f1f8f6" >
             <img src={rompecabeza} alt="" />
           <Text fontSize='3xl' textAlign="center" maxWidth="600px" color="#5aadac" padding='10px'> <b>Nuestros Servicios</b></Text>
           <img  src={globos} alt="" />
         </Box>
 
-        <Box display='flex' flexWrap='wrap' w='80%' m='0 auto' justifyContent='space-between' gap='1em' >
-          <Servicios />        
+        <Box display='flex' flexWrap='wrap' w='80%' m='0 auto' justifyContent='space-between' gap='1em'>
+          <Servicios  />        
         <Divider borderColor="#5aadac" mb={6} />
         </Box>
         

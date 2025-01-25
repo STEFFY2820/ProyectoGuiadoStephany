@@ -21,13 +21,21 @@ useEffect(()=>{
   return (
 
 
-    <Box maxW='sm' padding='20px' >
-      <Card maxW='sm'>
+    <Box maxW='sm' padding='20px'     
+
+ >
+      <Card maxW='sm'     
+      _hover={{
+      bg: "#CFB1FC",
+      transform: "scale(1.1)",
+      boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)", 
+    }}
+    transition="all 0.2s ease-in-out" >
         <CardBody>
           <Image src={imageUrl} alt={imageUrl} loading="lazy" h='400px' w='300px'/>
           <Stack mt='6' spacing='3'>
-            <Heading color='#d9cc00' size='md'>{service.NombreServ}</Heading>
-            <Divider borderColor="#d9cc00" mb={6} />
+            <Heading color='#574AFF' size='md'>{service.NombreServ}</Heading>
+            <Divider borderColor="#7094FF" mb={6} />
             <Text>
               {service.Descripcion}
             </Text>

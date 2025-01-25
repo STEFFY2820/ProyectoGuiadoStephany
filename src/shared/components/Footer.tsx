@@ -1,8 +1,8 @@
-import { Box, Text, HStack, Link } from '@chakra-ui/react';
-import { HiAcademicCap } from "react-icons/hi2";
+import { Box, Text, HStack, Link,Image } from '@chakra-ui/react';
 import phone from '@images/phone.gif'
 import location from '@images/location.gif'
 import facebook from '@images/facebook.gif'
+import logoScala from '@images/logo_escala.png'
 
 import bccolor from '@images/color2.jpg'
 
@@ -17,15 +17,15 @@ const Footer = () => {
       color="#f5f5f5"
       py={8}
       textAlign="center"
-      borderRadius="lg"
       boxShadow="xl"
-      mb={4}
+      mb={1}
     >
-      <HStack spacing={8} justify="space-around" alignItems="center" mb={6}>
-        {/* Título */}
+      <HStack spacing={8} justify="space-around" alignItems="center" mb={3}>
         <Box display="flex" flexDirection="column" alignItems="center" textAlign="center">
+
+          <Image src={logoScala} w='150px' h='150px'></Image>
           <Text fontSize="3xl" fontWeight="bold" mb={2}>
-            <HiAcademicCap /> <b>Cuna Guardería ABC</b> <br /> del Aprendizaje
+          <b>Cuna Guardería ABC</b> <br /> del Aprendizaje
           </Text>
           <img src={reloj} alt="" />
           <br />
@@ -33,7 +33,6 @@ const Footer = () => {
           <p><b>Lunes – Viernes 8.00 am – 6.00 pm <br />Cerrado fines de semana</b></p>
         </Box>
 
-        {/* Información de contacto */}
         <Box display="flex" flexDirection="column" alignItems="center" textAlign="center" px={4} pl='50px'>
           <img src={phone} alt="Teléfono" style={{ width: "70px", marginBottom: "4px" }} />
           <Text fontSize="lg" mb={2} fontWeight="bold">
@@ -55,7 +54,6 @@ const Footer = () => {
           </Link>
         </Box>
 
-        {/* Mapa */}
         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" textAlign="center">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.0928065487329!2d-76.97472104277205!3d-12.155110427246617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b85ca2244159%3A0x7a2b7a2754181c22!2sC.%20Maximiliano%20Carranza%20498%2C%20San%20Juan%20de%20Miraflores%2015801!5e0!3m2!1ses-419!2spe!4v1737244494070!5m2!1ses-419!2spe"
@@ -67,7 +65,6 @@ const Footer = () => {
         </Box>
       </HStack>
 
-      {/* Pie de página */}
       <Text fontSize="sm" mt={4} fontWeight="bold">
         &copy; {new Date().getFullYear()} <b>Cuna Guardería ABC del Aprendizaje. Todos los derechos reservados.</b>
       </Text>
