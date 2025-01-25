@@ -68,7 +68,6 @@ const Home = () => {
               <Box flex="1" display="flex" justifyContent="center" alignItems="center" p={6} pt='40px'>
                 <video
                   width="50%"
-                  maxWidth="300px"
                   height="auto"
                   controls
                   autoPlay
