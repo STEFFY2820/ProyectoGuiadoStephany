@@ -6,7 +6,7 @@ import img2  from '@images/servidores.jpg'
 import nube  from '@images/slb.png'
 import usFond from '@images/usFondo.jpg'
 import { MdCheckCircle } from "react-icons/md"
-import Profesores from "@components/Profesores"
+import Docentes from "@components/Docentes"
 
 const Us = () => {
   return (
@@ -27,7 +27,7 @@ const Us = () => {
           <Heading pb='10px' color='#6059bb'>Nuestros Valores</Heading>
         </Box>
         
-    <HStack spacing={8} align="flex-start" pl='50px'>
+    <HStack spacing={8} align="flex-start" pl='70px'>
 
         <Box>
           <Box display="flex" alignItems="center" gap="10px" p='10px'>
@@ -69,11 +69,11 @@ const Us = () => {
       
 
 
-      <VStack spacing={8} align="flex-start" pl='320px'  >
+      <VStack spacing={8} align="flex-start" pl='350px'  >
               <Box flex="1" paddingLeft='100px' paddingRight='500px'>
 
               <Box pt='10px' pb='10px' pl='50px' >
-                <Heading pb='10px' color='#6059bb'><b>¿Qué ofrecemos?</b></Heading>
+                <center><Heading pb='10px' color='#6059bb'><b>¿Qué ofrecemos?</b></Heading></center>
               </Box>
 
                 <Text width='600px' textAlign='justify' >Servicio de guardería flexible y de alta calidad, diseñado para atender las necesidades de desarrollo cognitivo, físico y emocional de niños de 1 año y medio a 7 años. 
@@ -95,7 +95,7 @@ const Us = () => {
 
 
                 <Box  pt='10px' pb='10px' pl='50px'>
-                  <Heading pb='10px' color='#6059bb'><b>¿Qué nos hace únicos?</b></Heading></Box>
+                  <center><Heading pb='10px' color='#6059bb'><b>¿Qué nos hace únicos?</b></Heading></center></Box>
                 
                 <List spacing={4} color="#333" textAlign='justify' width='600px' >
                   <ListItem>
@@ -111,9 +111,11 @@ const Us = () => {
                     Espacios seguros y diseñados especialmente para fomentar el movimiento y el aprendizaje a través del juego.
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={MdCheckCircle} color="green.500" />
+                    <ListIcon as={MdCheckCircle} color="green.500"/>
                     Personal capacitado y comprometido con la educación y el bienestar infantil.
                   </ListItem>
+
+                  <br />
                 </List>
               </Box>
       </VStack>
@@ -123,14 +125,13 @@ const Us = () => {
 
 
   <Box >
-    <Box>
-      <Heading pb='10px' color='#6059bb'>Nuestro Staf</Heading>
-
-    </Box>
+        <Box pt='10px' pb='10px' pl='50px' >
+          <center><Heading pb='10px' color='#6059bb' pt='10px'>Nuestro Staff</Heading></center>
+        </Box>
 
     <HStack>
       <Box display='flex' flexWrap='wrap' w='80%' m='0 auto' justifyContent='space-between' gap='1em' >
-          <Profesores />        
+          <Docentes />        
         <Divider borderColor="#5aadac" mb={6} />
         </Box>
 

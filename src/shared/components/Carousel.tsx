@@ -20,13 +20,15 @@ const SwiperImages = [banner8, banner2, banner5, banner4]
 
 const Carousel = () => {
   return (
-    <Swiper pagination={true} modules={[Pagination]}  className="mySwiper" >
+    <center>
+    <Swiper pagination={true} modules={[Pagination]}  className="mySwiper"  >
     {
       SwiperImages.map(image => (
-        <SwiperSlide key={image}><Image h='550px' w='1600px' src={image} /></SwiperSlide>
+        <SwiperSlide key={image}><Image h='550px' w='1200px' src={image} pt='20px'/></SwiperSlide>
       ))
     }
   </Swiper>
+  </center>
   )
 }
 

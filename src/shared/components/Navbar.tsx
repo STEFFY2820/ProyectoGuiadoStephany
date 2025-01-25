@@ -1,76 +1,74 @@
-import { Link as ChackraLink, Box, MenuList, MenuItem, Menu, Image, HStack, Text, MenuButton, useDisclosure, VStack } from "@chakra-ui/react"
+import { Link as ChackraLink,MenuList, MenuItem, Menu, MenuButton, useDisclosure,Box,  Image, HStack, Text} from "@chakra-ui/react"
 import { RiHomeHeartFill } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
-import { FaUserLarge } from "react-icons/fa6";
+// import { FaUserLarge } from "react-icons/fa6";
 import logo from '/logofin.jpg'
-import { ReactElement, useContext, useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-import { account } from "../lib/Appwrite"
-import { Link } from "react-router-dom"
-import { UserContext } from "../context/UserContext";
+// import { ReactElement, useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import { toast } from "sonner";
+// import { account } from "../lib/Appwrite"
+// import { Link } from "react-router-dom"
+// import { UserContext } from "../context/UserContext";
 import Whatsapp from "../components/Whatsapp"
 import { FaWhatsapp } from "react-icons/fa";
 
 
-const NavLink = ({ icon, text, ref, onClick }: {
-  icon: ReactElement,
-  text: string,
-  onClick: () => void,
+// const NavLink = ({ icon, text, ref, onClick }: {
+//   icon: ReactElement,
+//   text: string,
+//   onClick: () => void,
 
-}) => {
-  return (
-    <ChackraLink ref={ref} onClick={onClick} display='flex' gap='10px' alignItems='center'> {icon} {text}</ChackraLink>
-  )
-}
+// }) => {
+//   return (
+//     <ChackraLink ref={ref} onClick={onClick} display='flex' gap='10px' alignItems='center'> {icon} {text}</ChackraLink>
+//   )
+// }
+
+// const ProfileMenu = ({ username }: { username: string }) => {
+
+//   const navigate = useNavigate()
+//   const userContext = useContext(UserContext)
+
+  // const logout = async () => {
+  //   // const sessionId:string =localStorage.getItem('sessionId')!
+  //   // await account.deleteSession(userContext!.session.$id)
+  //   await userContext?.logout()
+  //   // localStorage.removeItem(sessionId)
+  //   navigate('/Home')
+
+  //   toast.success('Has cerrado session')
+
+  // }
 
 
-const ProfileMenu = ({ username }: { username: string }) => {
 
-  const navigate = useNavigate()
-  const userContext = useContext(UserContext)
-
-  const logout = async () => {
-    // const sessionId:string =localStorage.getItem('sessionId')!
-    // await account.deleteSession(userContext!.session.$id)
-    await userContext?.logout()
-    // localStorage.removeItem(sessionId)
-    navigate('/')
-
-    toast.success('Has cerrado session')
-  }
-
-  return (
-    <Menu>
-      <MenuButton>
-        <Box display="flex"
-          alignItems="center"
-          fontSize="lg"
-          _hover={{
-            backgroundColor: "whiteAlpha.800",
-            color: "#5aadac",
-            borderRadius: "10px",
-            p: "8px"
-          }}
-          borderRadius="10px"
-          p="8px"> <FaUserLarge size={30} style={{ marginRight: "8px" }} />Coorporativo</Box>
+//   return (
+//     <Menu>
+//       <MenuButton>
+//         <Box display="flex"
+//           alignItems="center"
+//           fontSize="lg"
+//           _hover={{
+//             backgroundColor: "whiteAlpha.800",
+//             color: "#5aadac",
+//             borderRadius: "10px",
+//             p: "8px"
+//           }}
+//           borderRadius="10px"
+//           p="8px"> <FaUserLarge size={30} style={{ marginRight: "8px" }} />Coorporativo</Box>
         
-      </MenuButton>
-      <MenuList>
-
-        <MenuItem> <Link to='/profile' ></Link>Ver perfil</MenuItem>
-        <MenuItem> <Link to='/products' ></Link>Productos</MenuItem>
-        <MenuItem onClick={logout}>Cerrar Sesión</MenuItem>
-      </MenuList>
-    </Menu>
-  )
-}
+//       </MenuButton>
+//       <MenuList>
+//       <MenuItem onClick={goLogin}>Iniciar Sesión</MenuItem>
+//         {/* <MenuItem> <Link to='/profile' ></Link>Ver perfil</MenuItem>
+//         <MenuItem> <Link to='/products' ></Link>Productos</MenuItem> */}
+//         <MenuItem onClick={logout}>Cerrar Sesión</MenuItem>
+//       </MenuList>
+//     </Menu>
+//   )
+// }
 
 const Navbar = () => {
-  const btnRef = useRef()
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const [username, setUsername] = useState()
-
   const navigate = useNavigate()
 
   const nosotros = () => {
@@ -78,20 +76,13 @@ const Navbar = () => {
   }
 
   const inicio = ()=>{
-    navigate('/home')
+    navigate('/')
   }
 
-
-  async function getUser() {
-    const cuenta = await account.get()
-    setUsername(cuenta.name)
+  const goLogin = async ()=>{
+    navigate('/login')
 
   }
-
-  useEffect(() => {
-    getUser()
-
-  }, [])
 
   return (
     <>
@@ -138,6 +129,25 @@ const Navbar = () => {
               </Box>
 
               <Box
+                onClick={goLogin}
+                display="flex"
+                alignItems="center"
+                fontSize="lg"
+                cursor="pointer"
+                _hover={{
+                  backgroundColor: "whiteAlpha.800",
+                  color: "#5aadac",
+                  borderRadius: "10px",
+                  p: "8px"
+                }}
+                borderRadius="10px"
+                p="8px"
+              >
+                <FaUsers size={30} style={{ marginRight: "8px" }} />
+                Coorporativo
+              </Box>
+
+              <Box
                 onClick={nosotros}
                 display="flex"
                 alignItems="center"
@@ -155,8 +165,9 @@ const Navbar = () => {
                 <FaUsers size={30} style={{ marginRight: "8px" }} />
                 Nosotros
               </Box>
-
-              <ProfileMenu username={username} />
+{/* 
+{/* 
+              <ProfileMenu username={username} /> */}
               <Box
                 display="flex"
                 alignItems="center"

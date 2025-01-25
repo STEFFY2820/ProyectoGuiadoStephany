@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { storage } from "../lib/Appwrite"
 import { Appwrite } from "../lib/env"
-import { Box, Card, CardBody, Divider, Heading, Image, Stack, Text } from "@chakra-ui/react"
+import { Box,Text, Card, CardBody, Divider,Heading ,Stack,Image} from "@chakra-ui/react"
 
-const Profesor = (profesores) => {
+const Docente = ({docente}) => {
+
     const [imageUrl, setImageUrl] = useState<string>()
 
     const getImage = ()=> {
-      const url = storage.getFilePreview(Appwrite.buckets.pictures, profesores.photoId)
+      const url = storage.getFilePreview(Appwrite.buckets.pictures, docente.photoDoc)
       console.log(url)
       setImageUrl(url)
   }
@@ -15,17 +16,17 @@ const Profesor = (profesores) => {
   useEffect(()=>{
     getImage()
   },[])
-  
+
   return (
     <Box maxW='sm' padding='20px' >
     <Card maxW='sm'>
       <CardBody>
         <Image src={imageUrl} alt={imageUrl} loading="lazy" h='400px' w='300px'/>
         <Stack mt='6' spacing='3'>
-          <Heading color='#d9cc00' size='md'>{profesores.nombre}</Heading>
+          <Heading color='#d9cc00' size='md'>{docente.nombreDoc}</Heading>
           <Divider borderColor="#d9cc00" mb={6} />
           <Text>
-            {profesores.cargo}
+            {docente.cargo}
           </Text>
 
         </Stack>
@@ -37,4 +38,4 @@ const Profesor = (profesores) => {
   )
 }
 
-export default Profesor
+export default Docente

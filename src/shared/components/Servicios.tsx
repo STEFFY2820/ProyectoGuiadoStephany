@@ -11,7 +11,7 @@ const Servicios = () => {
     const { fromDatabase } = useAppwrite()
 
     const ServiciosCollection = fromDatabase(Appwrite.datababaseId).collection(Appwrite.collections.servicios)
-    console.log(ServiciosCollection)
+    console.log('rev',ServiciosCollection)
 
     const getServicesAppwrite = async () => {
     

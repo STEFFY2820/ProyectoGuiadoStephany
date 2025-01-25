@@ -1,20 +1,20 @@
 import { useContext, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { Box, Button, FormLabel, Stack, Input, TabPanel, TabPanels, Tab, TabList, Tabs } from "@chakra-ui/react"
-import loginBackground from '@images/login.jpg'
-import { account, database, ID } from "../shared/lib/Appwrite"
+import { Box, Button, FormLabel, Stack, Input, TabPanel, TabPanels,Tabs } from "@chakra-ui/react"
+// import loginBackground from '@images/login.jpg'
+// import { account, database, ID } from "../shared/lib/Appwrite"
 //import Email from "@components/Email"
-import { Appwrite } from "../shared/lib/env"
+// import { Appwrite } from "../shared/lib/env"
 import { toast, Toaster } from "sonner"
 import { UserContext } from "../shared/context/UserContext"
 // import { toast } from "sonner"
-
+import bground from '@images/bccolor.jpg'
 
 const Login = () => {
 
     const loginForm = useRef(null)
     const navigate = useNavigate()
-    const crearCuentaForm = useRef(null)
+    // const crearCuentaForm = useRef(null)
     const userContext = useContext(UserContext)
 
 
@@ -28,37 +28,37 @@ const Login = () => {
             const { email, password } = Object.fromEntries(form.entries()) as { [k: string]: string }
 
             await userContext?.login(email, password)        
-            navigate('/home')
+            navigate('/table')
         }
     }
 
-    const crearCuenta = async (e: React.MouseEvent<HTMLDivElement>) => {
-        e.preventDefault()
+    // const crearCuenta = async (e: React.MouseEvent<HTMLDivElement>) => {
+    //     e.preventDefault()
 
-        const formulario = crearCuentaForm.current
+    //     const formulario = crearCuentaForm.current
 
-        const accountId = ID.unique()
+    //     const accountId = ID.unique()
 
-        if (formulario) {
-            const form = new FormData(formulario)
+    //     if (formulario) {
+    //         const form = new FormData(formulario)
 
-            const { email, password, name } = Object.fromEntries(form.entries())
+    //         const { email, password, name } = Object.fromEntries(form.entries())
 
-            await account.create(ID.unique(), email, password, name)
-            await database.createDocument(Appwrite.datababaseId, Appwrite.collections.profiles, ID.unique(), {
-                userId: accountId,
+    //         await account.create(ID.unique(), email, password, name)
+    //         await database.createDocument(Appwrite.datababaseId, Appwrite.collections.profiles, ID.unique(), {
+    //             userId: accountId,
 
-            }).then(() => {
-                toast.success('Perfil creado')
-            })
+    //         }).then(() => {
+    //             toast.success('Perfil creado')
+    //         })
 
-        }
-    }
+    //     }
+    // }
 
     useEffect(() => {
         const session = localStorage.getItem('cookieFallback')
 
-        if (session && JSON.parse(session).length != 0) navigate('/home')
+        if (session && JSON.parse(session).length != 0) navigate('/table')
 
         console.log(userContext?.session)
     }, [])
@@ -69,21 +69,34 @@ const Login = () => {
         //contenedor de chakra
         <>
             <Toaster richColors />
-            <Stack direction='row' height='100vh' >
+            <Stack direction='row' height='100vh' backgroundImage={bground} backgroundSize="contain"
+                    >
 
-                <Box width='50%' bgPos='center' bgSize='cover'>
-                </Box>
-                <Box width='50%' display='flex' alignItems='center' justifyContent='center'>
-                    <Box bgColor='#5aadac' padding='2em' borderRadius='20px'>
+
+                <Box width='100%' display='flex' alignItems='center' justifyContent='center' >
+                    <Box  padding='2em' 
+                                              width="300px"
+                                              height="310px"
+                                              bg="blue.500"
+                                              borderRadius="lg"
+                                              boxShadow="lg"
+                                              transform="translateY(-10px)"
+                                              transition="all 0.3s ease-in-out"
+                                              _hover={{
+                                                transform: "translateY(-20px) scale(1.05)",
+                                                boxShadow: "2xl",
+                                              }}>
                         <Tabs>
-                            <TabList>
+
+                            {/* <TabList>
                                 <Tab>Ingresar</Tab>
                                 <Tab>Soy nuevo</Tab>
-                            </TabList>
+                            </TabList> */}
 
                             <TabPanels>
                                 <TabPanel>
-                                    <Box onSubmit={(e: React.MouseEvent<HTMLDivElement>) => ingresar(e)} as='form' ref={loginForm} display='flex' flexDirection='column' gap='1em'>
+                                    <Box onSubmit={(e: React.MouseEvent<HTMLDivElement>) => ingresar(e)} as='form' ref={loginForm} display='flex' flexDirection='column' gap='1em'
+      >
                                         <div className="formGroup">
                                             <FormLabel htmlFor="email" color='beige'>Email: </FormLabel>
                                             <Input id="email" name="email" type="email" />
@@ -93,11 +106,11 @@ const Login = () => {
                                             <FormLabel htmlFor="password" color='beige'>Contraseña: </FormLabel>
                                             <Input id="password" name="password" type="password" />
                                         </div>
-                                        <Button type='submit'>Ingresar</Button>
+                                        <Button type='submit'mt='10px'>Ingresar</Button>
                                     </Box>
                                 </TabPanel>
 
-                                <TabPanel>
+                                {/* <TabPanel>
                                     <Box minH='400px' ref={crearCuentaForm} as='form' display='flex' flexDirection='column' gap='1em'>
                                         <div className="formGroup">
                                             <FormLabel htmlFor="name" color='beige'>Nombre: </FormLabel>
@@ -116,7 +129,7 @@ const Login = () => {
 
                                         <Button onClick={(e) => crearCuenta(e)}>Crear Cuenta</Button>
                                     </Box>
-                                </TabPanel>
+                                </TabPanel> */}
 
                             </TabPanels>
                         </Tabs>
