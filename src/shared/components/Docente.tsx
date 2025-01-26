@@ -24,10 +24,8 @@ const Docente = ({docente}) => {
             bg: "#5aadac",
             transform: "scale(1.1)",
             boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)", }}
-    
     >
       <CardBody
-      
       >
         <Image src={imageUrl} alt={imageUrl} loading="lazy" h='400px' w='300px'/>
         <Stack mt='6' spacing='3'>

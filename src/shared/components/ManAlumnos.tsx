@@ -307,28 +307,28 @@ const ManAlumnos = () => {
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='name'>Nombre alumno</FormLabel>
-                          <Input id='name' name='name' type="text" />
+                          <Input id='name' name='name' type="text" required/>
                       </FormControl>
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='lastname'>Apellido alumno</FormLabel>
-                          <Input id='lastname' name='lastname' type="text" />
+                          <Input id='lastname' name='lastname' type="text" required />
                       </FormControl>
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='doc'>Dni alumno</FormLabel>
-                          <Input id='doc' name='doc' type="text" />
+                          <Input id='doc' name='doc' type="text" required />
                       </FormControl>
 
                       
                       <FormControl mt={4}>
                           <FormLabel htmlFor='edadA'>Edad alumno</FormLabel>
-                          <Input id='edadA' name='edadA' type="number" />
+                          <Input id='edadA' name='edadA' type="number" required />
                       </FormControl>
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='grade'> Grado </FormLabel>
-                          <Input id='grade' name='grade' type="text" />
+                          <Input id='grade' name='grade' type="text" required />
                       </FormControl>
 
                   <ModalFooter>

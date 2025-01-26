@@ -97,8 +97,7 @@ const useAppwrite = () => {
                 }
 
                 }
-                
-    
+            
             const logout = async (sessionId: string) => {
                 return await account.deleteSession(sessionId)
             }
