@@ -268,12 +268,12 @@ const ManServicio = () => {
 
                         <FormControl mt={4}>
                             <FormLabel htmlFor='name'>Nombre Servicio</FormLabel>
-                            <Input id='name' name='name' type="text" />
+                            <Input id='name' name='name' type="text" required/>
                         </FormControl>
 
                         <FormControl mt={4} alignItems='center'>
                             <FormLabel htmlFor='description'>Descripcion</FormLabel>
-                            <Input id='description' name='description' type="text" />
+                            <Input id='description' name='description' type="text" required/>
                         </FormControl>
 
                     <ModalFooter>

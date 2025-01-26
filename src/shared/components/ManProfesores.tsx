@@ -302,33 +302,33 @@ const ManProfesores = () => {
                   <form ref={modalForm} onSubmit={createProfesor}>
                       <FormControl mt={4}>
                           <FormLabel htmlFor='image'>Imagen</FormLabel>
-                          <Input id='image' name='image' type="file" />
+                          <Input id='image' name='image' type="file" required />
                       </FormControl>
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='name'>Nombre Profesor</FormLabel>
-                          <Input id='name' name='name' type="text" />
+                          <Input id='name' name='name' type="text" required/>
                       </FormControl>
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='lastname'>Apellido Profesor</FormLabel>
-                          <Input id='lastname' name='lastname' type="text" />
+                          <Input id='lastname' name='lastname' type="text" required/>
                       </FormControl>
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='cargo'>Cargo Profesor</FormLabel>
-                          <Input id='cargo' name='cargo' type="text" />
+                          <Input id='cargo' name='cargo' type="text" required />
                       </FormControl>
 
                       
                       <FormControl mt={4}>
                           <FormLabel htmlFor='telf'>Telefono Profesor</FormLabel>
-                          <Input id='telf' name='telf' type="text" />
+                          <Input id='telf' name='telf' type="text" required/>
                       </FormControl>
 
                       <FormControl mt={4}>
                           <FormLabel htmlFor='email'>Correo Profesor</FormLabel>
-                          <Input id='email' name='email' type="email" />
+                          <Input id='email' name='email' type="email" required/>
                       </FormControl>
 
                   <ModalFooter>
